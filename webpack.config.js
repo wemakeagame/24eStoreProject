@@ -2,8 +2,10 @@ const path = require('path');
 const webpack  = require('webpack');
 
 module.exports = {
-    entry: './app.js',
-    output: { path: __dirname, filename: 'bundle.js'},
+    context: path.join(__dirname, "src"),
+    entry: "./js/app.js",
+    output: { path: __dirname + "/src/", filename: 'bundle.js'},
+    mode: 'production',
 
     module: {
         rules: [
@@ -16,5 +18,7 @@ module.exports = {
                 }
             }
         ]
-    }
+    },
+
+    watch: true
 }
