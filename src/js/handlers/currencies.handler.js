@@ -1,14 +1,5 @@
 import axios from "axios";
 
-export function model() {
-    return {
-        currencies: [],
-        fetching: false,
-        fetched: false,
-        error: null
-    }
-}
-
 export function fetchCurrencies() {
     return function (dispatch) {
         axios.get("http://api.nbp.pl/api/exchangerates/tables/a/?format=json").then((Response) => {
@@ -16,6 +7,12 @@ export function fetchCurrencies() {
         }).catch((error) => {
             dispatch({ type: "FETCH-CURRENCIES_REJECTED", payload: error })
         })
+    }
+}
+
+export function getFavoritesCurrencies() {
+    return {
+        type: "GET_FAVORITE_CURRENCIES"
     }
 }
 

@@ -1,23 +1,24 @@
 import React from "react"
 import { connect } from "react-redux"
+import bootstrap from "bootstrap"
 
 import { fetchCurrencies } from "../handlers/currencies.handler"
-import currenciesTemplate from "../templates/currencies.template"
+import layoutTemplate from "../templates/layout.template"
+import style from "../../css/all.scss"
 
-class Layout extends React.Component {
+export class Layout extends React.Component {
     componentWillMount() {
         this.props.dispatch(fetchCurrencies())
     }
 
     render() {
-        console.log(this.props);
-        return currenciesTemplate(this.props.currencies);
+        return layoutTemplate(this.props);
     }
 }
 
 const mapStoreToProps = function (store) {
     return {
-        currencies: store.currency.currencies,
+        currencies: store.currencyReducer.currencies,
     };
 }
 
