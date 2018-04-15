@@ -26,12 +26,27 @@ body {
 
     .favorite-currencies {
         background-color: #c0dfcb;
-        border: 1px dashed #cccccc
+        border: 1px dashed #cccccc;
+
+        text-align: right;
+
+        .btn-clean-list {
+            margin: 10px;
+        }
     }
 
     .currencies {
         background-color: #c5d1d6;
         border-top: 1px solid #cccccc;
+
+        .panel {
+            text-align: center;
+
+            .btn-default {
+                margin: 10px;
+                background-color: #ffffff;
+            }
+        }
     }
 
     .currencies, .favorite-currencies {

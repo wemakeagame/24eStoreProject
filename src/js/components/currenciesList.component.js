@@ -31,6 +31,7 @@ export class CurrenciesList extends React.Component {
 
         return <div id="currencies" className="collapse currencies">
             <div className="panel">
+            <button className="btn btn-default" data-toggle="collapse" data-target="#currencies">Cancel</button>
                 <div className="currency-wrapper">
                     {mappedCurrencies}
                 </div>

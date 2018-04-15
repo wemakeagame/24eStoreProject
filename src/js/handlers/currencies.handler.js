@@ -37,6 +37,12 @@ export function addFavoriteCurrency(currency) {
    }
 }
 
+export function cleanFavoriteList () {
+    return  {
+        type: "CLEAN_FAVORITE_LIST"
+    }
+}
+
 export function removeFavoriteCurrency(currency) {
     return {
         type: "REMOVE_FAVORITE_CURRENCY",

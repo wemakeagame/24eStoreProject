@@ -38,6 +38,9 @@ export function favoritesCurrencyReducer(state = [], action) {
             
             return state;
         }
+        case "CLEAN_FAVORITE_LIST": {
+            return state = [];
+        }
         case "ADD_FAVORITE_CURRENCY": {
             return state = state.concat(action.payload);
         }

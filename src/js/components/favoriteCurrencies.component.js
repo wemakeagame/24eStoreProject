@@ -1,16 +1,20 @@
 import React from "react"
 import { connect } from "react-redux"
 
-import { getFavoritesCurrencies, removeFavoriteCurrency, addCurrency } from "../handlers/currencies.handler"
+import { getFavoritesCurrencies, removeFavoriteCurrency, addCurrency, cleanFavoriteList } from "../handlers/currencies.handler"
 
 export class FavoriteCurrencies extends React.Component {
-    componentWillMount () {
+    componentWillMount() {
         this.props.dispatch(getFavoritesCurrencies());
     }
 
-    removeFromFavorite (currency) {
+    removeFromFavorite(currency) {
         this.props.dispatch(removeFavoriteCurrency(currency));
         this.props.dispatch(addCurrency(currency));
+    }
+
+    cleanFavoriteList() {
+        this.props.dispatch(cleanFavoriteList());
     }
 
     renderCurrency(currency) {
@@ -23,9 +27,16 @@ export class FavoriteCurrencies extends React.Component {
     }
 
     render() {
-        const mappedCurrencies = this.props.favorites.map(currency => this.renderCurrency(currency));
+        let mappedCurrencies = this.props.favorites.map(currency => this.renderCurrency(currency));
+        let content = <div>
+                <button className="btn btn-danger btn-clean-list" onClick={this.cleanFavoriteList.bind(this)}>Clean favorites</button>
+                <div className="currency-wrapper">
+                    {mappedCurrencies}
+                </div>
+            </div>;
+        let template = mappedCurrencies.length > 0 ? content : null;
 
-        return <div className="currency-wrapper">{mappedCurrencies}</div>
+        return template;
     }
 }
 
