@@ -1,24 +1,37 @@
 import React from "react"
 import { connect } from "react-redux"
 
-import { getFavoritesCurrencies } from "../handlers/currencies.handler"
+import { getFavoritesCurrencies, removeFavoriteCurrency, addCurrency } from "../handlers/currencies.handler"
 
 export class FavoriteCurrencies extends React.Component {
     componentWillMount () {
         this.props.dispatch(getFavoritesCurrencies());
     }
 
-    render() {
-        const mappedCurrencies = this.props.favorites.map(currency => <p>{currency}</p>);
+    removeFromFavorite (currency) {
+        this.props.dispatch(removeFavoriteCurrency(currency));
+        this.props.dispatch(addCurrency(currency));
+    }
 
-        return <div className="currency">{mappedCurrencies}</div>
+    renderCurrency(currency) {
+        return <div className="currency-item">
+            <h4>{currency.code}</h4>
+            <p>{currency.currency}</p>
+            <h3>{currency.mid}</h3>
+            <button className="btn btn-danger" onClick={this.removeFromFavorite.bind(this, currency)}>Remove</button>
+        </div>;
+    }
+
+    render() {
+        const mappedCurrencies = this.props.favorites.map(currency => this.renderCurrency(currency));
+
+        return <div className="favorite-currencies">{mappedCurrencies}</div>
     }
 }
 
 const mapStoreToProps = function (store) {
-    console.log(store);
     return {
-        favorites: store.favoritesCurrencyReducer,
+        favorites: store.favoritesCurrencyReducer
     };
 }
 

@@ -1,0 +1,39 @@
+body {
+    .title {
+        text-align: center;
+    }
+
+    .actions {
+        display: inline-block;
+
+        .add {
+            height: 50px;
+            width: 50px;
+            font-size: 30px;
+            font-weight: 100;
+            border-radius: 100%;
+            line-height: 0;
+            vertical-align: baseline;
+            padding-top: 0;
+
+        }
+
+        padding: 15px;
+    }
+
+    #currencies {
+        .currency-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            
+            .currency-item {
+                background-color: #f6f6f6;
+                flex-basis: 15%;
+                text-align: center;
+                margin-bottom: 5px;
+                padding: 15px;
+            }
+        }
+    }
+}

@@ -2,7 +2,7 @@ import currenciesHandler from "../handlers/currencies.handler"
 
 export function currencyReducer(
     state = {
-        currencies: [{ rates: [] }],
+        currencies: [],
         fetching: false,
         fetched: false,
         error: null
@@ -16,7 +16,15 @@ export function currencyReducer(
             return { ...state, fetching: false, error: action.payload }
         }
         case "FETCH_CURRENCIES_FULFILLED": {
-            return { ...state, fetching: false, fetched: true, currencies: action.payload.currencies }
+            return { ...state, fetching: false, fetched: true, currencies: action.payload }
+        }
+        case "REMOVE_CURRENCY": {
+            const listCurrencies = state.currencies.filter(i => i !== action.payload)
+
+            return { ...state, currencies: listCurrencies}
+        }
+        case "Add_CURRENCY": {
+            return { ...state, currencies: state.currencies.concat(action.payload)}
         }
     }
 
@@ -28,18 +36,13 @@ export function favoritesCurrencyReducer(state = [], action) {
     switch (action.type) {
         case "GET_FAVORITE_CURRENCIES": {
             
-
             return state;
         }
-        case "ADD_FAVORITE_CURRENCIES": {
+        case "ADD_FAVORITE_CURRENCY": {
             return state = state.concat(action.payload);
         }
-        case "REMOVE_FAVORITE_CURRENCIES": {
-            let index = action.payload.index;
-
-            //data: prevState.data.filter(i => i !== item)
-
-            return state = [...state.slice(0, index), ...state.slice(index + 1)]
+        case "REMOVE_FAVORITE_CURRENCY": {
+            return state = state.filter(i => i !== action.payload)
         }
     }
 

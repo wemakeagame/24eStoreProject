@@ -1,12 +1,13 @@
 const path = require('path');
 const webpack = require('webpack');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = {
     context: path.join(__dirname, "src"),
     entry: "./js/app.js",
     output: { path: __dirname + "/src/", filename: 'bundle.js' },
     mode: 'production',
+    devtool: 'source-map',
 
     module: {
         rules: [
