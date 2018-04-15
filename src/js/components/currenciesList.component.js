@@ -1,5 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
+import $ from "jquery"
+import bootstrap from "bootstrap"
 
 import { fetchCurrencies, addFavoriteCurrency, removeCurrency } from "../handlers/currencies.handler"
 
@@ -10,7 +12,9 @@ export class CurrenciesList extends React.Component {
 
     addToFavorite(currency) {
         this.props.dispatch(addFavoriteCurrency(currency));
-        this.props.dispatch(removeCurrency(currency))
+        this.props.dispatch(removeCurrency(currency));
+        console.log($('#currencies'));
+        $('#currencies').collapse('hide');
     }
 
     renderCurrency(currency) {
@@ -25,7 +29,13 @@ export class CurrenciesList extends React.Component {
     render() {
         const mappedCurrencies = this.props.currencies.map(currency => this.renderCurrency(currency));
 
-        return <div className="currency-wrapper">{mappedCurrencies}</div>;
+        return <div id="currencies" className="collapse currencies">
+            <div className="panel">
+                <div className="currency-wrapper">
+                    {mappedCurrencies}
+                </div>
+            </div>
+        </div>;
     }
 }
 

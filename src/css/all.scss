@@ -1,6 +1,9 @@
 body {
     .title {
         text-align: center;
+        padding: 50px;
+        background-color: #f3f3f3;
+        border: 1px dashed #cccccc
     }
 
     .actions {
@@ -21,18 +24,29 @@ body {
         padding: 15px;
     }
 
-    #currencies {
+    .favorite-currencies {
+        background-color: #c0dfcb;
+        border: 1px dashed #cccccc
+    }
+
+    .currencies {
+        background-color: #c5d1d6;
+        border-top: 1px solid #cccccc;
+    }
+
+    .currencies, .favorite-currencies {
         .currency-wrapper {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            align-items: center;
+            justify-content: space-evenly;
             
             .currency-item {
                 background-color: #f6f6f6;
-                flex-basis: 15%;
+                flex-basis: 20%;
                 text-align: center;
-                margin-bottom: 5px;
                 padding: 15px;
+                margin: 15px;
             }
         }
     }

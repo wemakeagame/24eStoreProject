@@ -16,14 +16,9 @@ export default function (props) {
                 <button className="btn btn-primary add" data-toggle="collapse" data-target="#currencies">+</button>
             </div>
         </h2>
-        <Provider store={Store}><FavoriteCurrencies /></Provider>
 
-        <div id="currencies" class="collapse">
-            <div className="panel">
-                <Provider store={Store}><CurrenciesList /></Provider>
-            </div>
-        </div>
+        <Provider store={Store}><CurrenciesList /></Provider>
 
-        
+        <div className="favorite-currencies"><Provider store={Store}><FavoriteCurrencies /></Provider></div>
     </div>
 }

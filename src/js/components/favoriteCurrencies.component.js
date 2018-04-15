@@ -25,7 +25,7 @@ export class FavoriteCurrencies extends React.Component {
     render() {
         const mappedCurrencies = this.props.favorites.map(currency => this.renderCurrency(currency));
 
-        return <div className="favorite-currencies">{mappedCurrencies}</div>
+        return <div className="currency-wrapper">{mappedCurrencies}</div>
     }
 }
 
